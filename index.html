@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="right-side.css">
     <title></title>
   </head>
   <body>
@@ -31,18 +32,32 @@
 
       </form>
       <section class="right-side-cards">
-        <h3>Task Title</h3>
-        <hr />
-        <ul>
-          <li><input type="checkbox" name="Task Completed" value="">Random Task Added</li>
+       <section class="to-do-card">
+        <div class="task-title">
+         <h3>Task Title</h3>
+       </div>
+       <div class"task-checklist">
+        <ul class="checklist">
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
         </ul>
-        <hr />
-        <div>
-          <img src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
+      </div>
+        <div class="task-btns">
+         <div class="btn-group">
+          <img class='urgency' src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
           <figcaption>Urgent</figcaption>
-          <img src="images/delete.svg" alt="Delete Button">
-          <figcaption>Delete</figcaption>
+         </div>
+         <div class="btn-group">
+           <img class="delete-card"src="images/delete.svg" alt="Delete Button">
+           <figcaption>Delete</figcaption>
         </div>
+        </div>
+       </section>
+
+
       </section>
     </main>
 
