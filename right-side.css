@@ -37,11 +37,15 @@ ul {
 }
 
 .task-title {
-  border: 3px solid red:
 }
 
 .checklist {
   margin-top: 20px;
+}
+
+.task-card-line {
+  width: 99.9%;
+  margin-top: 15px;
 }
 
 .urgency {
