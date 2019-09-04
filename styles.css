@@ -8,6 +8,11 @@ header {
   justify-content: space-between;
 }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
 main {
   display: grid;
   grid-template-columns: 1fr 2fr;
