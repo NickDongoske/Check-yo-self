@@ -16,19 +16,23 @@
     </header>
     <main>
       <form class="left-side-form">
-        <label for="Task Title">Task Title</label><br>
-        <input type="text" name="task title input" placeholder="Enter Task Title Here">
-        <ul class="task-list">
-
-        </ul>
-        <label for="Task Item">Task Item</label><br>
-        <input type="text" name="Task Item Input" placeholder="Enter Task Item Here">
-        <button type="button" name="Add Task Item">+</button>
-        <button type="button" name="Make Task List">Make Task List</button>
-        <button type="button" name="Clear All">Clear All</button>
-        <hr />
-        <button type="button" name="Filter By Urgency">Filter By Urgency</button>
-
+        <label class="left-side-labels" for="Task Title">Task Title</label><br>
+        <input id="left-side-title-input" class="left-side-input" type="text" name="task title input" placeholder="Enter Task Title Here">
+          <ul class="task-list">
+            <li class="new-task-item"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item">Example List Here!</li>
+            <li class="new-task-item"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item">Example List Here! AND HERE!</li>
+          </ul>
+        <label class="left-side-labels" for="Task Item">Task Item</label><br>
+        <div class="left-side-bottom-buttons">
+          <span class="add-task-item">
+            <input class="left-side-input" type="text" name="Task Item Input" placeholder="Enter Task Item Here">
+            <button id="plus-button" class="left-side-button" type="button" name="Add Task Item">+</button><br>
+          </span>
+          <button class="left-side-button" type="button" name="Make Task List">Make Task List</button>
+          <button class="left-side-button" type="button" name="Clear All">Clear All</button>
+          <hr class="line" />
+          <button class="left-side-button" type="button" name="Filter By Urgency">Filter By Urgency</button>
+        </div>
       </form>
       <section class="right-side-cards">
         <h3>Task Title</h3>
