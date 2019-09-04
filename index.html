@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="header.css">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="left-side.css">
+    <link rel="stylesheet" href="right-side.css">
     <title></title>
   </head>
   <body>
@@ -17,33 +20,51 @@
     </header>
     <main>
       <form class="left-side-form">
-        <label for="Task Title">Task Title</label><br>
-        <input type="text" name="task title input" placeholder="Enter Task Title Here">
-        <ul class="task-list">
-
-        </ul>
-        <label for="Task Item">Task Item</label><br>
-        <input type="text" name="Task Item Input" placeholder="Enter Task Item Here">
-        <button type="button" name="Add Task Item">+</button>
-        <button type="button" name="Make Task List">Make Task List</button>
-        <button type="button" name="Clear All">Clear All</button>
-        <hr />
-        <button type="button" name="Filter By Urgency">Filter By Urgency</button>
-
+        <label class="left-side-labels" for="Task Title">Task Title</label><br>
+        <input id="left-side-title-input" class="left-side-input" type="text" name="task title input" placeholder="Enter Task Title Here">
+          <ul class="task-list">
+            <li class="new-task-item"><button type="button" name="delete-button" class="delete-button"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item"></button>Example List Here!</li>
+            <li class="new-task-item"><button type="button" name="delete-button" class="delete-button"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item"></button>Example List Here! AND HERE!</li>
+          </ul>
+        <label class="left-side-labels" for="Task Item">Task Item</label><br>
+        <div class="left-side-bottom-buttons">
+          <span class="add-task-item">
+            <input class="left-side-input" type="text" name="Task Item Input" placeholder="Enter Task Item Here">
+            <button id="plus-button" class="left-side-button" type="button" name="Add Task Item">+</button><br>
+          </span>
+          <button class="left-side-button" type="button" name="Make Task List">Make Task List</button>
+          <button class="left-side-button" type="button" name="Clear All">Clear All</button>
+          <hr class="line" />
+          <button class="left-side-button" type="button" name="Filter By Urgency">Filter By Urgency</button>
+        </div>
       </form>
       <section class="right-side-cards">
-        <h3>Task Title</h3>
-        <hr />
-        <ul>
-          <li><input type="checkbox" name="Task Completed" value="">Random Task Added</li>
+       <section class="to-do-card">
+        <div class="task-title">
+         <h3>Task Title</h3>
+       </div>
+       <div class"task-checklist">
+        <ul class="checklist">
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
+          <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Random Task Added</li>
         </ul>
-        <hr />
-        <div>
-          <img src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
+      </div>
+        <div class="task-btns">
+         <div class="btn-group">
+          <img class='urgency' src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
           <figcaption>Urgent</figcaption>
-          <img src="images/delete.svg" alt="Delete Button">
-          <figcaption>Delete</figcaption>
+         </div>
+         <div class="btn-group">
+           <img class="delete-card"src="images/delete.svg" alt="Delete Button">
+           <figcaption>Delete</figcaption>
         </div>
+        </div>
+       </section>
+
+
       </section>
     </main>
 
