@@ -19,11 +19,11 @@
 
     </header>
     <main>
-      <form class="left-side-form">
+      <form class="left-side-form" id="left-side-form">
         <label class="left-side-labels" for="Task Title">Task Title</label><br>
         <input id="left-side-title-input" class="left-side-input" type="text" name="task title input" placeholder="Enter Task Title Here">
           <ul class="task-list">
-            <li><button type="button" name="delete-button" class="delete-button"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item"></button>Example List Here!</li>
+            <li class="list-item"><button type="button" name="delete-button" class="delete-button"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item"></button>Example List Here!</li>
             <li><button type="button" name="delete-button" class="delete-button"><img class="delete-button" src="images/delete.svg" alt="Delete Button for Task Item"></button>Example List Here! AND HERE!</li>
           </ul>
         <label class="left-side-labels" for="Task Item">Task Item</label><br>
@@ -33,7 +33,7 @@
             <button id="plus-button" class="left-side-button" type="button" name="Add Task Item">+</button><br>
           </span>
           <button id="make-task-list" class="left-side-button" type="button" name="Make Task List">Make Task List</button>
-          <button class="left-side-button" type="button" name="Clear All">Clear All</button>
+          <button id="clear-all-button" class="left-side-button clear-all" type="button" name="Clear All">Clear All</button>
           <hr class="line" />
           <button class="left-side-button" type="button" name="Filter By Urgency">Filter By Urgency</button>
         </div>
