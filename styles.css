@@ -25,3 +25,11 @@ button {
 #clear-all-button:disabled {
   background-color: grey;
 }
+
+#make-task-list:disabled {
+  background-color: grey;
+}
+
+#plus-button:disabled {
+  background-color: grey;
+}

@@ -13,7 +13,7 @@ var leftSideForm = document.getElementById('left-side-form');
 var output = '';
 var clearAllButton = document.getElementById('clear-all-button');
 
-plusButton.addEventListener('click', addTaskHandler);
+plusButton.addEventListener('click', createTaskItem);
 
 makeTaskList.addEventListener('click', makeToDoList);
 
@@ -23,6 +23,16 @@ leftSideForm.addEventListener('click', clearAll);
 
 leftSideTitleInput.addEventListener('change', checkTitleInput);
 
+taskItemInput.addEventListener('change', checkTaskInput);
+
+resetButtons();
+
+function resetButtons() {
+  makeTaskList.disabled = true;
+  clearAllButton.disabled = true;
+  plusButton.disabled = true;
+}
+
 function makeToDoList() {
   var spans = document.querySelectorAll(".task-item");
   let tasks = [];
@@ -30,11 +40,7 @@ function makeToDoList() {
     var task = new Task(spans[i].innerText);
     tasks.push(task.text);
   };
-  var list = document.createElement('ul');
-  for (var i = 0; i < tasks.length; i++) {
-    list.innerHTML += `<li>${tasks[i]}</li>`;
-  };
-  var toDoList = new ToDoList(currentId, `${leftSideTitleInput.value}`, tasks);
+  var toDoList = new ToDoList({taskList: tasks, title: leftSideTitleInput.value});
   rightSideCards.insertAdjacentHTML('afterbegin', `
     <section class="to-do-card">
       <div class="task-title">
@@ -42,14 +48,12 @@ function makeToDoList() {
         <hr class="task-card-line"/>
       </div>
       <div class="task-checklist">
+      ${makeList(tasks)}
       </div>`);
   document.querySelector('.card-title').innerText = `${leftSideTitleInput.value}`;
-  document.querySelector('.task-checklist').innerHTML = list.toString();
-console.log(tasks);
-return list;
 
-  // makeList(tasks);
-  // document.querySelector('.task-checklist').appendChild(makeList(tasks));
+  resetButtons();
+  taskList.innerHTML = '';
 }
   // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${makeList(tasks)}</li></ul><hr class="task-card-line"/></div><div class="task-btns"><div class="btn-group"><img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency"><figcaption>Urgent</figcaption></div><div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button"><figcaption>Delete</figcaption></div></div></section>`);
 
@@ -57,31 +61,10 @@ function makeList(array) {
 console.log(array)
   var list = document.createElement('ul');
   for(var i = 0; i < array.length; i++) {
-    // var item = document.createElement('li');
     list.innerHTML += `<li>${array[i]}</li>`
-    // console.log("item inside loop:::", item);
-    // item.appendChild(document.createTextNode(array[i]));
-    // list.appendChild(item);
-    // list.insertAdjacentHTML("afterbegin", `
     // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${array[i]}</li>`);
   }
-  //
-  // console.log(list);
-  return list;
-}
-
-
-function addTaskHandler() {
-  var bAddTaskHandler = true;
-  if (taskItemInput.value === '') {
-    errorBox(taskItemInput);
-    bAddTaskHandler = false;
-  } else {
-    removeError(taskItemInput);
-  }
-  if (bAddTaskHandler) {
-    createTaskItem();
-  }
+  return list.innerHTML;
 }
 
 function errorBox(input) {
@@ -98,6 +81,7 @@ function createTaskItem() {
   taskArray.push(`${taskItemInput.value}`);
   taskItemInput.value = '';
   document.querySelector('.new-task-item').classList.remove('new-task-item');
+  plusButton.disabled = true;
 }
 
 function deleteTaskItem(event) {
@@ -121,6 +105,14 @@ function clearAll(event) {
 function checkTitleInput() {
   if(leftSideTitleInput.value !== '') {
     clearAllButton.disabled = false;
+    makeTaskList.disabled = false;
     removeError(leftSideTitleInput);
+  }
+}
+
+function checkTaskInput() {
+  if(taskItemInput.value !== '') {
+    plusButton.disabled = false;
+    removeError(taskItemInput);
   }
 }
