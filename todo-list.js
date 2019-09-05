@@ -3,7 +3,7 @@ class ToDoList {
     this.id = obj.id;
     this.title = obj.title;
     this.urgent = false;
-    this.taskArray = obj.taskArray;
+    this.taskList = obj.taskList;
   }
 
   // updateToDo () {
