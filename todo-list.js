@@ -1,9 +1,9 @@
 class ToDoList {
-  constructor (id, title, taskArray) {
-    this.id = id;
-    this.title = title;
+  constructor (obj) {
+    this.id = obj.id;
+    this.title = obj.title;
     this.urgent = false;
-    this.taskArray = taskArray;
+    this.taskArray = obj.taskArray;
   }
 
   // updateToDo () {

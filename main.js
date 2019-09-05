@@ -10,7 +10,8 @@ var currentId = 0;
 var taskArray = [];
 var rightSideCards = document.querySelector('.right-side-cards');
 var leftSideForm = document.getElementById('left-side-form');
-
+var output = '';
+var clearAllButton = document.getElementById('clear-all-button');
 
 plusButton.addEventListener('click', addTaskHandler);
 
@@ -20,18 +21,53 @@ taskList.addEventListener('click', deleteTaskItem);
 
 leftSideForm.addEventListener('click', clearAll);
 
+leftSideTitleInput.addEventListener('change', checkTitleInput);
+
 function makeToDoList() {
-  var toDoList = new ToDoList(currentId, `${leftSideTitleInput.value}`, taskArray);
+  var spans = document.querySelectorAll(".task-item");
+  let tasks = [];
+  for (var i = 0; i < spans.length; i++){
+    var task = new Task(spans[i].innerText);
+    tasks.push(task.text);
+  };
+  var list = document.createElement('ul');
+  for (var i = 0; i < tasks.length; i++) {
+    list.innerHTML += `<li>${tasks[i]}</li>`;
+  };
+  var toDoList = new ToDoList(currentId, `${leftSideTitleInput.value}`, tasks);
   rightSideCards.insertAdjacentHTML('afterbegin', `
     <section class="to-do-card">
-      <div class="task-title"><h3 class="card-title">Task Title</h3><hr class="task-card-line"/></div><div class"task-checklist"><ul class="checklist">${makeList(taskArray)}<li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">Hello</li></ul><hr class="task-card-line"/></div><div class="task-btns"><div class="btn-group"><img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency"><figcaption>Urgent</figcaption></div><div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button"><figcaption>Delete</figcaption></div></div></section>`);
+      <div class="task-title">
+        <h3 class="card-title">Task Title</h3>
+        <hr class="task-card-line"/>
+      </div>
+      <div class="task-checklist">
+      </div>`);
   document.querySelector('.card-title').innerText = `${leftSideTitleInput.value}`;
-  currentId++;
+  document.querySelector('.task-checklist').innerHTML = list.toString();
+console.log(tasks);
+return list;
+
+  // makeList(tasks);
+  // document.querySelector('.task-checklist').appendChild(makeList(tasks));
 }
+  // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${makeList(tasks)}</li></ul><hr class="task-card-line"/></div><div class="task-btns"><div class="btn-group"><img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency"><figcaption>Urgent</figcaption></div><div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button"><figcaption>Delete</figcaption></div></div></section>`);
 
 function makeList(array) {
-  console.log(`oh hey backticks`);
-  return 'not hello';
+console.log(array)
+  var list = document.createElement('ul');
+  for(var i = 0; i < array.length; i++) {
+    // var item = document.createElement('li');
+    list.innerHTML += `<li>${array[i]}</li>`
+    // console.log("item inside loop:::", item);
+    // item.appendChild(document.createTextNode(array[i]));
+    // list.appendChild(item);
+    // list.insertAdjacentHTML("afterbegin", `
+    // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${array[i]}</li>`);
+  }
+  //
+  // console.log(list);
+  return list;
 }
 
 
@@ -71,9 +107,20 @@ function deleteTaskItem(event) {
 }
 
 function clearAll(event) {
-  if(event.target.classList.contains('clear-all')) {
+  if(leftSideTitleInput.value === '' && taskList.innerHTML === '') {
+    clearAllButton.disabled = true;
+    errorBox(leftSideTitleInput);
+} else if(event.target.classList.contains('clear-all')) {
     taskItemInput.value = '';
     leftSideTitleInput.value = '';
     taskList.innerHTML = '';
+    removeError(leftSideTitleInput);
+  }
+}
+
+function checkTitleInput() {
+  if(leftSideTitleInput.value !== '') {
+    clearAllButton.disabled = false;
+    removeError(leftSideTitleInput);
   }
 }
