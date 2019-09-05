@@ -1,5 +1,6 @@
-// class Task {
-//
-// }
-//
-// module.exports = Task;
+class Task {
+  constructor(text) {
+    this.text = text;
+    this.complete = false;
+  }
+}
