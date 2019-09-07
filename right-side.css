@@ -5,16 +5,16 @@ ul {
 .right-side-cards {
   background-color: #F3F6F7;
   column-count: 2;
-  column-gap: 1em;
+  column-gap: .5em;
   padding: 0 30px 0 0;
   overflow-y: scroll;
 }
 
-.to-do-checkbox {
+.checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  display: inline-block;
+  display: inline;
   background-color: #f1f1f1;
   border: 1px solid #1F1F3D;
   color: #666;
@@ -37,6 +37,7 @@ ul {
 }
 
 .task-title {
+  margin-bottom: 15px;
 }
 
 .checklist {
@@ -49,16 +50,17 @@ ul {
 }
 
 .urgency {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
 }
 
 .delete-card {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
 }
 
 .task-btns {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }

@@ -21,9 +21,9 @@ taskList.addEventListener('click', deleteTaskItem);
 
 leftSideForm.addEventListener('click', clearAll);
 
-leftSideTitleInput.addEventListener('change', checkTitleInput);
+leftSideTitleInput.addEventListener('keyup', checkTitleInput);
 
-taskItemInput.addEventListener('change', checkTaskInput);
+taskItemInput.addEventListener('keyup', checkTaskInput);
 
 resetButtons();
 
@@ -49,20 +49,32 @@ function makeToDoList() {
       </div>
       <div class="task-checklist">
       ${makeList(tasks)}
-      </div>`);
+      <hr class="task-card-line"/>
+      </div>
+      <div class="task-btns">
+      <div class="btn-group">
+        <img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
+        <figcaption>Urgent</figcaption>
+      </div>
+      <div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button">
+      <figcaption>Delete</figcaption>
+      </div>
+      </div>
+    </section>`);
   document.querySelector('.card-title').innerText = `${leftSideTitleInput.value}`;
 
   resetButtons();
   taskList.innerHTML = '';
+  leftSideTitleInput.value = ' ';
 }
   // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${makeList(tasks)}</li></ul><hr class="task-card-line"/></div><div class="task-btns"><div class="btn-group"><img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency"><figcaption>Urgent</figcaption></div><div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button"><figcaption>Delete</figcaption></div></div></section>`);
 
 function makeList(array) {
 console.log(array)
-  var list = document.createElement('ul');
+  var list = document.createElement('div');
+  list.classList.add('task-checklist');
   for(var i = 0; i < array.length; i++) {
-    list.innerHTML += `<li>${array[i]}</li>`
-    // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${array[i]}</li>`);
+    list.innerHTML += `<p class="task-card-checklist"><img src="images/checkbox.svg" class="checkbox">${array[i]}</p>`
   }
   return list.innerHTML;
 }
