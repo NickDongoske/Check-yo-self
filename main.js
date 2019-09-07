@@ -13,6 +13,7 @@ var leftSideForm = document.getElementById('left-side-form');
 var output = '';
 var clearAllButton = document.getElementById('clear-all-button');
 
+
 plusButton.addEventListener('click', createTaskItem);
 
 makeTaskList.addEventListener('click', makeToDoList);
@@ -24,6 +25,8 @@ leftSideForm.addEventListener('click', clearAll);
 leftSideTitleInput.addEventListener('keyup', checkTitleInput);
 
 taskItemInput.addEventListener('keyup', checkTaskInput);
+
+rightSideCards.addEventListener('click', changeCardContent);
 
 resetButtons();
 
@@ -44,7 +47,7 @@ function makeToDoList() {
   rightSideCards.insertAdjacentHTML('afterbegin', `
     <section class="to-do-card">
       <div class="task-title">
-        <h3 class="card-title">Task Title</h3>
+        <h3 contenteditable= "true" class="card-title">Task Title</h3>
         <hr class="task-card-line"/>
       </div>
       <div class="task-checklist">
@@ -53,8 +56,8 @@ function makeToDoList() {
       </div>
       <div class="task-btns">
       <div class="btn-group">
-        <img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
-        <figcaption>Urgent</figcaption>
+        <img class="urgency card-not-urgent" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
+        <figcaption class="fig-caption">Urgent</figcaption>
       </div>
       <div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button">
       <figcaption>Delete</figcaption>
@@ -74,7 +77,7 @@ console.log(array)
   var list = document.createElement('div');
   list.classList.add('task-checklist');
   for(var i = 0; i < array.length; i++) {
-    list.innerHTML += `<p class="task-card-checklist"><img src="images/checkbox.svg" class="checkbox">${array[i]}</p>`
+    list.innerHTML += `<p class="task-card-checklist" contenteditable= "true"><img src="images/checkbox.svg" class="checkbox unchecked">${array[i]}</p>`
   }
   return list.innerHTML;
 }
@@ -103,10 +106,10 @@ function deleteTaskItem(event) {
 }
 
 function clearAll(event) {
-  if(leftSideTitleInput.value === '' && taskList.innerHTML === '') {
+  if (leftSideTitleInput.value === '' && taskList.innerHTML === '') {
     clearAllButton.disabled = true;
     errorBox(leftSideTitleInput);
-} else if(event.target.classList.contains('clear-all')) {
+} else if (event.target.classList.contains('clear-all')) {
     taskItemInput.value = '';
     leftSideTitleInput.value = '';
     taskList.innerHTML = '';
@@ -115,7 +118,7 @@ function clearAll(event) {
 }
 
 function checkTitleInput() {
-  if(leftSideTitleInput.value !== '') {
+  if (leftSideTitleInput.value !== '') {
     clearAllButton.disabled = false;
     makeTaskList.disabled = false;
     removeError(leftSideTitleInput);
@@ -123,8 +126,40 @@ function checkTitleInput() {
 }
 
 function checkTaskInput() {
-  if(taskItemInput.value !== '') {
+  if (taskItemInput.value !== '') {
     plusButton.disabled = false;
     removeError(taskItemInput);
+  }
+}
+
+function changeCardContent(event) {
+  // if the event.target is a checkbox, then change image and css of taskObject
+  if (event.target.classList.contains('unchecked')) {
+    event.target.closest('p').classList.add('task-card-checklist-checked');
+    event.target.src = 'images/checkbox-active.svg';
+    event.target.classList.remove('unchecked');
+    // ToDoList.updateTask();
+  } else if (event.target.classList.contains('checkbox')) {
+    event.target.closest('p').classList.add('task-card-checklist');
+    event.target.closest('p').classList.remove('task-card-checklist-checked');
+    event.target.src = 'images/checkbox.svg';
+    event.target.classList.add('unchecked');
+  }
+  // if the event.target has deletebutton class then delete the whole toDoList object
+  // if the event.target is an urgency button then change css stuff and toDoList urgency property
+  if (event.target.classList.contains('card-not-urgent')) {
+    event.target.src = 'images/urgent-active.svg';
+    event.target.classList.remove('card-not-urgent');
+    event.target.closest('section').classList.add('to-do-card-urgent');
+    event.target.closest('figcaption').classList.add('fig-urgent');
+  } else if (event.target.classList.contains('urgency')) {
+    event.target.src = 'images/urgent.svg';
+    event.target.classList.add('card-not-urgent');
+    event.target.closest('section').classList.remove('to-do-card-urgent');
+    event.target.closest('figcaption').classList.remove('fig-urgent');
+  }
+
+  if (event.target.classList.contains('delete-card')) {
+    event.target.closest('section').remove();
   }
 }
