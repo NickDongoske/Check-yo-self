@@ -46,26 +46,27 @@ function makeToDoList() {
   var toDoList = new ToDoList({taskList: tasks, title: leftSideTitleInput.value});
   toDoLists.push(toDoList);
   rightSideCards.insertAdjacentHTML('afterbegin', `
-    <section class="to-do-card">
-      <div class="task-title">
-        <h3 contenteditable= "true" class="card-title">Task Title</h3>
-        <hr class="task-card-line"/>
-      </div>
-      <div class="task-checklist">
+  <section data-id="${toDoList.id}" data-title="${toDoList.title}" class="to-do-card">
+    <div class="task-title">
+      <h3 contenteditable= "true" class="card-title">${toDoList.title}</h3>
+      <hr class="task-card-line"/>
+    </div>
+    <div class="task-checklist">
       ${makeList(tasks)}
       <hr class="task-card-line"/>
-      </div>
-      <div class="task-btns">
+    </div>
+    <div class="task-btns">
       <div class="btn-group">
         <img class="urgency card-not-urgent" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency">
         <figcaption class="fig-caption">Urgent</figcaption>
       </div>
-      <div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button">
-      <figcaption>Delete</figcaption>
+      <div class="btn-group">
+        <img class="delete-card"src="images/delete.svg" alt="Delete Button">
+        <figcaption>Delete</figcaption>
       </div>
-      </div>
-    </section>`);
-  document.querySelector('.card-title').innerText = `${leftSideTitleInput.value}`;
+    </div>
+  </section>`);
+  // document.querySelector('.card-title').innerText = `${leftSideTitleInput.value}`;
 
   resetButtons();
   taskList.innerHTML = '';
@@ -75,11 +76,10 @@ function makeToDoList() {
   // <li><input class="to-do-checkbox" type="checkbox" name="Task Completed" value="">${makeList(tasks)}</li></ul><hr class="task-card-line"/></div><div class="task-btns"><div class="btn-group"><img class="urgency" src="images/urgent.svg" alt="Lightning Bolt To Show Urgency"><figcaption>Urgent</figcaption></div><div class="btn-group"><img class="delete-card"src="images/delete.svg" alt="Delete Button"><figcaption>Delete</figcaption></div></div></section>`);
 
 function makeList(array) {
-console.log(array)
   var list = document.createElement('div');
   list.classList.add('task-checklist');
   for(var i = 0; i < array.length; i++) {
-    list.innerHTML += `<p class="task-card-checklist" contenteditable= "true"><img src="images/checkbox.svg" class="checkbox unchecked">${array[i].text}</p>`
+    list.innerHTML += `<p class="task-card-checklist" contenteditable= "true"><img data-taskid="${array[i].text}" src="images/checkbox.svg" class="checkbox unchecked">${array[i].text}</p>`
   }
   return list.innerHTML;
 }
@@ -134,14 +134,16 @@ function checkTaskInput() {
 }
 
 function changeCardContent(event) {
-  // if the event.target is a checkbox, then change image and css of taskObject
 
   if (event.target.classList.contains('unchecked')) {
-    // toDoLists[0].updateTask();
+    findIndex().updateTask(findTask(findIndex()));
+    console.log(findTask(findIndex()));
     event.target.closest('p').classList.add('task-card-checklist-checked');
     event.target.src = 'images/checkbox-active.svg';
     event.target.classList.remove('unchecked');
   } else if (event.target.classList.contains('checkbox')) {
+    findIndex().updateTask(findTask(findIndex()));
+    console.log(findTask(findIndex()));
     event.target.closest('p').classList.add('task-card-checklist');
     event.target.closest('p').classList.remove('task-card-checklist-checked');
     event.target.src = 'images/checkbox.svg';
@@ -150,30 +152,49 @@ function changeCardContent(event) {
   // if the event.target has deletebutton class then delete the whole toDoList object
   // if the event.target is an urgency button then change css stuff and toDoList urgency property
   if (event.target.classList.contains('card-not-urgent')) {
-    // findToDoList();
+    findIndex().updateToDo();
     event.target.src = 'images/urgent-active.svg';
     event.target.classList.remove('card-not-urgent');
     event.target.closest('section').classList.add('to-do-card-urgent');
     event.target.closest('figcaption').classList.add('fig-urgent');
   } else if (event.target.classList.contains('urgency')) {
+    findIndex().updateToDo();
     event.target.src = 'images/urgent.svg';
     event.target.classList.add('card-not-urgent');
     event.target.closest('section').classList.remove('to-do-card-urgent');
     event.target.closest('figcaption').classList.remove('fig-urgent');
   }
 
-  if (event.target.classList.contains('delete-card')) {
-    event.target.closest('section').remove();
+  if ((event.target.classList.contains('delete-card')) && (checkComplete(findIndex().taskList))) {
+      event.target.closest('section').remove();
+    //or do some sort of error msg?
   }
 }
 
-// function findToDoList(event) {
-//   for (var i = 0; i < toDoLists.length; i++) {
-//     if (event.target.closest('h3').innerText === toDoLists[i].title) {
-//       event.target.src = 'images/urgent-active.svg';
-//       event.target.classList.remove('card-not-urgent');
-//       event.target.closest('section').classList.add('to-do-card-urgent');
-//       event.target.closest('figcaption').classList.add('fig-urgent');
-//     }
-//   }
-// }
+function findIndex() {
+  for (var i = 0; i < toDoLists.length; i++) {
+    if (toDoLists[i].id === event.target.parentNode.parentNode.parentNode.dataset.id) {
+      return toDoLists[i];
+    };
+  };
+};
+
+function findTask(toDoList) {
+  for (var i = 0; i < toDoList.taskList.length; i++) {
+    if (toDoList.taskList[i].text === event.target.dataset.taskid) {
+      // console.log(toDoList.taskList[i]);
+      return findIndex().taskList[i];
+    }
+  }
+}
+
+function checkComplete(taskList) {
+  for (var i = 0; i < taskList.length; i++) {
+    if (taskList[i].complete === false) {
+      console.log(taskList[i].complete);
+      return false;
+    }
+  }
+  console.log("true");
+  return true;
+}

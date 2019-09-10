@@ -7,19 +7,19 @@ class ToDoList {
   }
 
   updateToDo () {
-    // update urgency to false;
-    // update title
+    if (this.urgent === false) {
+      this.urgent = true;
+    } else {
+      this.urgent = false;
+    }
+  };
 
-  }
-
-  updateTask(event) {
-    // this.task.complete = true;
-    event.target.closest('p').classList.add('task-card-checklist-checked');
-    event.target.src = 'images/checkbox-active.svg';
-    event.target.classList.remove('unchecked');
-    // updated complete;
-    // update css (image, italics and color)
-
+  updateTask(task) {
+    if (task.complete === false) {
+      task.complete = true;
+    } else {
+      task.complete = false;
+    }
   }
 }
 
