@@ -34,7 +34,7 @@ Here's the comp that we went off of:
 ![alt text](images/check-yo-self-mobileComp.jpg "Check Yo' Self Mobile Comp")
 
 Here's what the screen shot looks like:
-![alt text](images/screen-shot.jpg "Check Yo' Self ScreenShot")
+![alt text](images/screen-shot-check-self.png "Check Yo' Self ScreenShot")
 
 Here's what the mobile screen shot looks like: 
-![alt text](images/screen-shot-mobile.jpg "Check Yo' Self Mobile Screenshot")
+![alt text](images/mobile-screenshot.png "Check Yo' Self Mobile Screenshot")
