@@ -2,33 +2,30 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="left-side.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="right-side.css">
     <title></title>
   </head>
   <body>
     <header>
       <h1>CHECK <span class="yo">YO'</span> SELF</h1>
       <form class="header-searchbar">
-          <button id="magnifying-glass" type="button" name="top-search-bar"><img src="images/search.svg"></button>
-          <input type="text" placeholder="Search..."></input>
+          <button id="magnifying-glass" type="button" name="top-search-bar"><img class="small-image" src="images/search.svg"></button>
+          <input class="search" type="text" placeholder="Search..."></input>
       </form>
 
 
     </header>
     <main>
       <form class="left-side-form" id="left-side-form">
-        <label class="left-side-labels" for="Task Title">Task Title</label><br>
+        <label class="left-side-labels" for="Task Title">Task Title</label>
         <input id="left-side-title-input" class="left-side-input" type="text" name="task title input" placeholder="Enter Task Title Here">
           <ul class="task-list">
           </ul>
-        <label class="left-side-labels" for="Task Item">Task Item</label><br>
+        <label class="left-side-labels" for="Task Item">Task Item</label>
         <div class="left-side-bottom-buttons">
           <span class="add-task-item">
             <input id="left-side-task-input" class="left-side-input" type="text" name="Task Item Input" placeholder="Enter Task Item Here">
-            <button id="plus-button" class="left-side-button" type="button" name="Add Task Item">+</button><br>
+            <button id="plus-button" class="left-side-button" type="button" name="Add Task Item">+</button>
           </span>
           <button id="make-task-list" class="left-side-button" type="button" name="Make Task List">Make Task List</button>
           <button id="clear-all-button" class="left-side-button clear-all" type="button" name="Clear All">Clear All</button>
@@ -37,7 +34,6 @@
         </div>
       </form>
       <section class="right-side-cards">
-       
       </section>
     </main>
     <script src="todo-list.js"></script>

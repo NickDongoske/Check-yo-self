@@ -4,7 +4,7 @@
 }
 
 html {
-  height: 100%;
+  height: 100vh;
 }
 
 header {
@@ -15,7 +15,7 @@ header {
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  height: 100%;
+  height: 100vh;
 }
 
 main {
@@ -27,6 +27,240 @@ button {
   cursor: pointer;
 }
 
+/* Header Items and Styling */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: ExtraBold 800;
+  background-color: #1f1f3d;
+}
+
+h1 {
+  border: width 100%;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: ExtraBold 800;
+  padding: 10px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  border-right: 0px;
+  margin-right: auto;
+}
+
+.header-searchbar {
+  margin-left: auto;
+  padding: 10px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.yo {
+  color: #ffc30c;
+}
+
+#magnifying-glass {
+  height: 100%;
+  width: 35px;
+  background-size: 10px;
+  background-color: #C7D3D8;
+  border: none;
+}
+
+.search {
+  display: inline;
+  height: 100%;
+  width: 200px;
+  border: none;
+}
+
+.small-image {
+  height: 50%;
+}
+
+/* Left Side Styling */
+
+.left-side-form {
+  color: #F3F6F7;
+  background-color: #587A8A;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.left-side-button {
+  background-color: #1F1F3D;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  padding: 10px 30px;
+  margin: 10px 20px;
+  width: 90%;
+  border: 0;
+  border-radius: 5px;
+}
+
+.left-side-input {
+  border: 2px solid #1F1F3D;
+  height: 44px;
+}
+
+.left-side-bottom-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-side-labels {
+  font-size: 1.2em;
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+#left-side-title-input {
+  width: 90%;
+  align-self: center;
+}
+
+.task-list {
+  margin: 25px;
+  list-style: none;
+}
+
+.new-task-item {
+  display: flex;
+  margin: 10px;
+  font-size: 1.1em;
+}
+
+.add-task-item {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  width: 90%;
+  padding: 10px;
+}
+
+#plus-button {
+  margin: 0px;
+  border-radius: 0px;
+  width: 100%;
+}
+
+.delete-button {
+  height: 22px;
+  width: 22px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  border: 0;
+  margin: 20px 0px;
+  background-color: #1F1F3D75;
+}
+
+/* Right Side Styling and Added To-Do Lists */
+
+ul {
+  list-style: none;
+}
+
+.right-side-cards {
+  background-color: #F3F6F7;
+  column-count: 2;
+  column-gap: .5em;
+  padding: 0 30px 0 0;
+  overflow-y: scroll;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline;
+  background-color: #f1f1f1;
+  color: #666;
+  top: 10px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 7px;
+  outline: none;
+  display: inline;
+}
+
+.to-do-card {
+  background-color: #FAFDFF;
+  border: 1px solid #C7D3D8;
+  display: inline-block;
+  width: 90%;
+  padding: 10px;
+  margin: 20px;
+}
+
+.to-do-card-urgent {
+  background-color: #FFE89D;
+  border: 2px solid #FFC30C;
+
+}
+
+.task-title {
+  margin-bottom: 15px;
+  color: #1F1F3D;
+}
+
+.checklist {
+  margin-top: 20px;
+}
+
+.task-card-checklist {
+  color: #1F1F3D;
+}
+
+.task-card-checklist-checked {
+  font-style: italic;
+  color: #3C6577;
+}
+
+.task-card-line {
+  width: 99.9%;
+  margin-top: 15px;
+}
+
+.urgency,
+.delete-card {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+figcaption {
+  color: #3C6577;
+}
+
+.fig-urgent {
+  color: #B23A25;
+}
+
+.task-btns {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-group {
+  display: block;
+  text-align: center;
+}
+
+/* Button Disabled Properties */
+
 #clear-all-button:disabled {
   background-color: grey;
 }
@@ -37,4 +271,40 @@ button {
 
 #plus-button:disabled {
   background-color: grey;
+}
+
+/* Media Queries */
+
+@media (max-width: 800px) {
+  .left-side-button {
+    font-size: 1em;
+  }
+
+  .right-side-cards {
+    column-count: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    display: grid;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+
+  .search {
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .left-side-form {
+    height: auto;
+    padding-bottom: 10px;
+  }
 }
