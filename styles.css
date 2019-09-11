@@ -9,7 +9,8 @@ html {
 
 header {
   display: flex;
-  justify-content: space-between;
+  height: 60px;
+  justify-content: space-between
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 main {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  overflow: hidden;
 }
 
 button {
@@ -30,33 +32,34 @@ button {
 /* Header Items and Styling */
 
 header {
+  background-color: #1f1f3d;
   display: flex;
+  font-family: 'Open Sans', sans-serif;
   justify-content: space-between;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: ExtraBold 800;
-  background-color: #1f1f3d;
+  position: fixed;
+  width: 100%;
 }
 
 h1 {
   border: width 100%;
+  border-right: 0px;
   color: #ffffff;
   font-family: 'Open Sans', sans-serif;
   font-weight: ExtraBold 800;
-  padding: 10px;
-  margin: 0px;
-  width: 100%;
   height: 100%;
-  border-right: 0px;
+  margin: 0px;
   margin-right: auto;
+  padding: 10px;
+  width: 100%;
 }
 
 .header-searchbar {
-  margin-left: auto;
-  padding: 10px;
   display: flex;
+  margin-left: auto;
   margin-right: 10px;
+  padding: 10px;
 }
 
 .yo {
@@ -64,54 +67,62 @@ h1 {
 }
 
 #magnifying-glass {
-  height: 100%;
-  width: 35px;
-  background-size: 10px;
   background-color: #C7D3D8;
+  background-size: 10px;
   border: none;
+  height: 100%;
+  width: 45px;
 }
 
 .search {
-  display: inline;
-  height: 100%;
-  width: 200px;
   border: none;
+  display: inline;
+  height: 75%;
+  width: 200px;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3em;
 }
 
 .small-image {
-  height: 50%;
+  height: 70%;
 }
 
 /* Left Side Styling */
 
 .left-side-form {
-  color: #F3F6F7;
   background-color: #587A8A;
+  color: #F3F6F7;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  margin-top: 60px;
 }
 
 .left-side-button {
   background-color: #1F1F3D;
-  color: #FFFFFF;
-  font-size: 1.5em;
-  padding: 10px 30px;
-  margin: 10px 20px;
-  width: 90%;
   border: 0;
   border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  margin: 10px 20px;
+  padding: 10px 30px;
+  width: 90%;
 }
 
 .left-side-input {
   border: 2px solid #1F1F3D;
+  font-family: 'Open Sans', sans-serif;
   height: 44px;
+  padding-left: 5px;
+  font-size: 1.5em;
+
 }
 
 .left-side-bottom-buttons {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .left-side-labels {
@@ -121,47 +132,47 @@ h1 {
 }
 
 #left-side-title-input {
-  width: 90%;
   align-self: center;
+  width: 90%;
 }
 
 .task-list {
-  margin: 25px;
   list-style: none;
+  margin: 25px;
 }
 
 .new-task-item {
   display: flex;
-  margin: 10px;
   font-size: 1.1em;
+  margin: 10px;
 }
 
 .add-task-item {
   display: grid;
   grid-template-columns: 9fr 1fr;
-  width: 90%;
   padding: 10px;
+  width: 90%;
 }
 
 #plus-button {
-  margin: 0px;
   border-radius: 0px;
+  margin: 0px;
   width: 100%;
 }
 
 .delete-button {
-  height: 22px;
-  width: 22px;
-  margin-right: 8px;
   border-radius: 50%;
+  height: 22px;
+  margin-right: 8px;
+  width: 22px;
 }
 
 .line {
-  width: 100%;
-  height: 3px;
-  border: 0;
-  margin: 20px 0px;
   background-color: #1F1F3D75;
+  border: 0;
+  height: 3px;
+  margin: 20px 0px;
+  width: 100%;
 }
 
 /* Right Side Styling and Added To-Do Lists */
@@ -174,34 +185,37 @@ ul {
   background-color: #F3F6F7;
   column-count: 2;
   column-gap: .5em;
+  height: auto;
+  margin-top: 60px;
+  overflow: auto;
   padding: 0 30px 0 0;
-  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
 }
 
 .checkbox {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-  display: inline;
   background-color: #f1f1f1;
-  color: #666;
-  top: 10px;
-  height: 18px;
-  width: 18px;
   border-radius: 50px;
+  color: #666;
   cursor: pointer;
-  margin-right: 7px;
-  outline: none;
   display: inline;
+  height: 18px;
+  margin-right: 7px;
+  -moz-appearance: none;
+  outline: none;
+  top: 10px;
+  -webkit-appearance: none;
+  width: 18px;
 }
 
 .to-do-card {
   background-color: #FAFDFF;
   border: 1px solid #C7D3D8;
   display: inline-block;
-  width: 90%;
-  padding: 10px;
   margin: 20px;
+  padding: 10px;
+  width: 90%;
 }
 
 .to-do-card-urgent {
@@ -211,8 +225,8 @@ ul {
 }
 
 .task-title {
-  margin-bottom: 15px;
   color: #1F1F3D;
+  margin-bottom: 15px;
 }
 
 .checklist {
@@ -224,14 +238,16 @@ ul {
 }
 
 .task-card-checklist-checked {
-  font-style: italic;
   color: #3C6577;
+  font-style: italic;
 }
 
 .task-card-line {
-  width: 99.9%;
   margin-top: 15px;
+  width: 99.9%;
 }
+
+
 
 .urgency,
 .delete-card {
@@ -249,9 +265,9 @@ figcaption {
 }
 
 .task-btns {
-  margin-top: 10px;
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .btn-group {
@@ -288,8 +304,18 @@ figcaption {
 @media (max-width: 600px) {
   header {
     display: grid;
+    height: 150px;
     justify-content: center;
     padding-bottom: 10px;
+  }
+
+
+  .right-side-cards {
+    margin-top: 150px;
+  }
+
+  .left-side-form{
+    margin-top: 150px;
   }
 
   .search {
