@@ -1,5 +1,5 @@
 # Check-yo-self
-## Written and Remixed by: Nick Sandwich Boiz (Nick D, Nick N, and Dustin)
+## Written and Remixed by: Nick Sandwich Boiz (Nick D, Nick N, and Dustin) - Link: https://nickdongoske.github.io/Check-yo-self/
 
 #### A little bit about the project: You've got stuff to do? Well, use our app. It's dope.
 
