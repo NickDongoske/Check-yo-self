@@ -1,10 +1,10 @@
 class Task {
-  constructor(text) {
+  constructor(text, complete) {
     this.text = text;
-    this.complete = false;
+    this.complete = complete || false;
     this.id = Date();
   }
 
-  
+
 
 }
